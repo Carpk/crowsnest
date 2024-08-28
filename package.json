@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "crowsnest": "file:",
+    "lightgallery": "^2.7.2",
     "vue": "^3.4.29"
   },
   "devDependencies": {

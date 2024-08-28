@@ -1,47 +1,86 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+// import TheWelcome from './components/TheWelcome.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <lightgallery
+    :settings="{ speed: 500, plugins: plugins }"
+    :onInit="onInit"
+    :onBeforeSlide="onBeforeSlide"
+  >
+    <a
+      data-lg-size="1406-1390"
+      class="gallery-item"
+      data-src="/IMG_0007.jpg"
+      data-sub-html="<h4>Larry 'Bear' Crow</h4> <p> unknown - unknown</p>"
+    >
+      <img
+        class="img-responsive"
+        style="width: 250px;"
+        src="/IMG_0007.jpg"
+      />
+    </a>
+    <a
+      class="gallery-item"
+      data-src="/IMG_0008.jpg"
+      data-sub-html="<h4>Larry 'Bear' Crow</h4> <p> unknown - unknown</p>"
+    >
+      <img
+        class="img-responsive"
+        style="width: 250px;"
+        src="/IMG_0008.jpg"
+      />
+    </a>
+    <a
+      class="gallery-item"
+      data-src="/IMG_0012.jpg"
+      data-sub-html="<h4>Larry 'Bear' Crow</h4> <p> unknown - unknown</p>"
+    >
+      <img
+        class="img-responsive"
+        style="width: 250px;"
+        src="/IMG_0012.jpg"
+      />
+    </a>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+    
+  </lightgallery>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+
+<script>
+import Lightgallery from 'lightgallery/vue';
+import lgZoom from 'lightgallery/plugins/zoom';
+import lgVideo from 'lightgallery/plugins/video';
+
+export default {
+  name: 'App',
+  components: {
+    Lightgallery,
+  },
+  data: () => ({
+    plugins: [lgZoom, lgVideo],
+  }),
+  methods: {
+    onInit: () => {
+      console.log('lightGallery has been initialized');
+    },
+    onBeforeSlide: () => {
+      console.log('calling before slide');
+    },
+  },
+};
+</script>
+<style lang="css">
+@import 'lightgallery/css/lightgallery.css';
+@import 'lightgallery/css/lg-zoom.css';
+@import 'lightgallery/css/lg-video.css';
+body {
+  margin: 0;
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.gallery-item {
+  margin: 5px;
 }
 </style>
