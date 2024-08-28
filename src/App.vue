@@ -43,7 +43,7 @@
         src="/IMG_0012.jpg"
       />
     </a>
-
+    
 
     
   </lightgallery>
